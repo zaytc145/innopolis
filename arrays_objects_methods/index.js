@@ -20,4 +20,4 @@ const goods = [
     {title: 'креветки', price: 400}
 ]
 
-const total = goods.reduce((acc, good) => acc + good.price, 0)
+const total = goods.reduce((acc, item) => acc + item.price, 0)
