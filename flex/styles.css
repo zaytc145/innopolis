@@ -10,63 +10,7 @@ body {
     padding: 20px;
 }
 
-.card {
-    border-radius: 12px;
-    padding: 24px;
-    box-shadow: 0px 0px 10px -3px rgba(34, 60, 80, 0.14);
-}
 
-.card-image {
-    text-align: center;
-    margin-bottom: 16px;
-}
-
-.card-image img {
-    border-radius: 12px;
-    max-width: 188px;
-    width: 100%;
-}
-
-.card-body{
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-}
-
-.card-body-title {
-    font-size: 18px;
-    color: #000000;
-    display: flex;
-    justify-content: space-between;
-}
-
-.card-body-description {
-    font-size: 16px;
-    color: #666666;
-}
-
-.card-body-tags {
-    display: flex;
-    gap: 16px;
-}
-
-.card-body-tags-tag {
-    font-size: 14px;
-    color: #666666;
-    display: flex;
-    gap: 6px;
-    align-items: center;
-}
-
-.card-body-tags-tag:before {
-    content: '';
-    display: inline-block;
-    margin-right: 6px;
-    background: #666666;
-    border-radius: 50%;
-    width: 16px;
-    height: 16px;
-}
 
 @media screen and (min-width: 540px) {
     .card {
