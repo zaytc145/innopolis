@@ -24,7 +24,7 @@ const DefaultLayout = () => {
                     </Menu.Item>}
                 </Menu>
             </Header>
-            <Content style={{flex: 1, padding: '24px 48px', flexDirection: 'column', display: 'flex'}}>
+            <Content style={{flex: 1, padding: '24px 48px', flexDirection: 'column', display: 'flex', overflow: "auto"}}>
                 <Outlet/>
             </Content>
         </Layout>

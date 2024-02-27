@@ -5,6 +5,7 @@ import mongoose from "mongoose";
 import UserModel from "./models/User.js";
 import UserDto from "./DTOs/UserDTO.js";
 import airQualityApi from "./http/airQualityApi.js";
+import EventsService from "./sevices/EventsService.js";
 
 const port = 3001
 const app = express()
@@ -60,8 +61,13 @@ app.post('/events', async (req, res) => {
         return res.status(404).send(data)
     }
 
+    const eventsService = new EventsService();
 
-    res.send(data)
+    res.send({
+        locationData: data.city.geo,
+        chartData: eventsService.getChartData(data),
+        tableData: eventsService.getTableData(data)
+    })
 })
 
 app.listen(port, () => {

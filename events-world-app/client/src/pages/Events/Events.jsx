@@ -1,4 +1,4 @@
-import {Alert, Button, Card, Col, Form, Input, InputNumber, Row} from "antd";
+import {Alert, Button, Card, Col, Form, Input, InputNumber, Row, Statistic} from "antd";
 import {useCallback, useState} from "react";
 import baseApi from "../../http/appApi";
 import LocationDataChart from "./LocationDataChart";
@@ -6,15 +6,24 @@ import LocationDataTable from "./LocationDataTable/LocationDataTable";
 
 const Events = () => {
     const [isLoading, setIsLoading] = useState(false);
-    const [dataByLocation, setDataByLocation] = useState([]);
     const [error, setError] = useState(null);
+
+    const [chartData, setChartData] = useState({
+        labels: [],
+        datasets: []
+    });
+    const [tableData, setTableData] = useState([]);
+    const [locationData, setLocationData] = useState(null)
+
 
     const onSubmit = useCallback(async (formData) => {
         setError(null);
         setIsLoading(true);
         try {
             const response = await baseApi.post('/events', formData);
-
+            setChartData(response.data.chartData);
+            setTableData(response.data.tableData);
+            setLocationData(response.data.locationData);
         } catch (e) {
             setError(e.response.data);
         } finally {
@@ -31,8 +40,9 @@ const Events = () => {
                     validateTrigger="onBlur"
                     layout="inline"
                     initialValues={{
-                        "city": "Shanghai"
+                        "city": "shanghai"
                     }}
+                    style={{marginBottom: 10}}
                 >
 
                     <Form.Item
@@ -51,16 +61,24 @@ const Events = () => {
                         <Button type="primary" htmlType="submit" loading={isLoading}>Find</Button>
                     </Form.Item>
                 </Form>
+                {locationData && <Row gutter={16}>
+                    <Col span={12}>
+                        <Statistic title="lat" value={locationData[0]}/>
+                    </Col>
+                    <Col span={12}>
+                        <Statistic title="lng" value={locationData[1]} precision={2}/>
+                    </Col>
+                </Row>}
             </Card>
         </Col>
         <Col span={24}>
             <Card>
-                <LocationDataTable/>
+                <LocationDataTable data={tableData}/>
             </Card>
         </Col>
         <Col span={24}>
             <Card>
-                <LocationDataChart/>
+                <LocationDataChart data={chartData}/>
             </Card>
         </Col>
     </Row>

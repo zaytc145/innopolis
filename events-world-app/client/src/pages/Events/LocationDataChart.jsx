@@ -8,10 +8,8 @@ import {
     Title,
     Tooltip,
     Legend,
+    Colors
 } from 'chart.js';
-
-import {useState} from "react";
-
 
 ChartJS.register(
     CategoryScale,
@@ -20,22 +18,22 @@ ChartJS.register(
     LineElement,
     Title,
     Tooltip,
-    Legend
+    Legend,
+    Colors
 );
 
 const LocationDataChart = (props) => {
-    const [data, setData] = useState({
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-        datasets: [
-            {
-                label: '# of Votes',
-                data: [12, 19, 3, 5, 2, 3],
-                borderWidth: 1
+    return <div style={{height: 600}}>
+        <Line data={props.data} options={{
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                colors: {
+                    enabled: true
+                }
             }
-        ]
-    });
-
-    return <Line data={data} options={{}}/>
+        }}/>
+    </div>
 }
 
 export default LocationDataChart
