@@ -1,0 +1,14 @@
+{
+  "name": "common_modules",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "init:dist": "node src/createDistDir.js",
+    "writeport": "node --env-file=.env src/writePort.js",
+    "readport": "node src/readPort.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
