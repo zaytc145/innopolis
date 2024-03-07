@@ -1,0 +1,21 @@
+create table categories(
+	id serial PRIMARY KEY,
+	name varchar(255) not null,
+	created_at timestamp not null
+);
+
+create table products(
+	id serial PRIMARY KEY,
+	name varchar(255) not null,
+	created_at timestamp not null,
+	category_id bigint REFERENCES categories(id)
+);
+
+insert into categories(name, created_at) values('Категория 1', '11/01/2023');
+insert into categories(name, created_at) values('Категория 2', '11/01/2023');
+
+insert into products(name, created_at, category_id) values('Товар 1', '11/01/2023', 1);
+insert into products(name, created_at, category_id) values('Товар 2', '11/01/2023', 2);
+insert into products(name, created_at, category_id) values('Товар 3', '11/01/2023', 2);
+
+select * from products where category_id=2;
