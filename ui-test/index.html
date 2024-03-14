@@ -1,0 +1,41 @@
+
+
+<form>
+	<div>
+		<label>Введите email</label>
+		<input type="email" aria-label="email" id="email" />
+		<div class="email-error d-none" aria-label="email-error" id="email-error"></div>
+	</div>
+
+	<div>
+		<label>Введите пароль</label>
+		<input type="text" aria-label="password" id="password" />
+		<div class="password-error d-none" aria-label="password-error" id="password-error"></div>
+	</div>
+
+    <div>
+        <label>Пол</label>
+        <select id="gender" aria-label="gender">
+            <option value="">-- --</option>
+            <option value="0">М</option>
+            <option value="1">Ж</option>
+        </select>
+        <div class="gender-error d-none" aria-label="gender-error" id="gender-error"></div>
+    </div>
+
+	<button id="submit" disabled>Отправить</button>
+</form>
+
+<style>
+	.email-error,
+	.password-error {
+		color: red;
+	}
+	.d-none {
+		display: none;
+	}
+
+	.input-error {
+		border-color: red;
+	}
+</style>
