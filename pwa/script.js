@@ -103,7 +103,7 @@ const app = () => {
         })
     }
 
-   const onLeftButtonClick = () => {
+    const onLeftButtonClick = () => {
         toggleActive(state.index)
         const targetIndex = state.index - 1;
         if (targetIndex < 0) {
@@ -134,6 +134,12 @@ const app = () => {
 
     document.addEventListener('DOMContentLoaded', () => {
         state.isLoaded = true
+    })
+
+    window.addEventListener('load', async () => {
+        if ('serviceWorker' in navigator) {
+            await navigator.serviceWorker.register('./sw.js');
+        }
     })
 }
 
