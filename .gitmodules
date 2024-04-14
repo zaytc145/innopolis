@@ -1,3 +1,6 @@
 [submodule "events-world-app"]
 	path = events-world-app
 	url = https://github.com/zaytc145/events-world-app
+[submodule "events-world-app"]
+	path = innopolis-final
+	url = https://github.com/zaytc145/innopolis-final
